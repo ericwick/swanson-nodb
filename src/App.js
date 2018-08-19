@@ -28,8 +28,6 @@ class App extends Component {
 
         <div>
           <Craft />
-          {/* <Edit />
-          <Delete /> */}
         </div>
       </div>
     );

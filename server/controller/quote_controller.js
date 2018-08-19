@@ -7,17 +7,15 @@ module.exports = {
     axios
       .get("http://ron-swanson-quotes.herokuapp.com/v2/quotes")
       .then(response => {
-        console.log(response.data);
+        console.log(response.data, 'get');
         quotes.unshift(response.data);
       });
 
     res.status(200).json(quotes[0]);
   },
   create: (req, res, next) => {
-    let { id } = req.body;
-    quotes.push({ id });
-    id++;
-
+    console.log(req.body.quote)
+    quotes.push(req.body.quote)
     res.status(200).json(quotes);
   },
   update: (req, res, next) => {

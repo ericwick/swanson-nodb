@@ -35,7 +35,6 @@ export default class Ron extends Component {
         </div>
 
         <p>{this.state.oneLine}</p>
-        {/* <button onClick={() => this.clearQuote()} /> */}
       </div>
     );
   }

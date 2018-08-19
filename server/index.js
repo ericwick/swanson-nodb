@@ -6,12 +6,9 @@ const qc = require("./controller/quote_controller");
 
 const app = express();
 app.use(cors());
+app.use(bodyParser.json());
 
-app.use = bodyParser.json();
-
-// app.get(`/v2/quotes`, qc.read);
 // app.put(`/v2/quotes/:id`, qc.update);
-// app.post(`/v2/quotes/`, qc.create);
 // app.delete(`/v2/quotes/:id`, qc.delete);
 
 app.get("/api/quotes", qc.getQuotes);

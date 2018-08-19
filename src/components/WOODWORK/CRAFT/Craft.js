@@ -1,50 +1,59 @@
 import React, { Component } from "react";
 import axios from "axios";
+import Card from "./Cards/Card";
+// import Input from "./Cards/Input";
 
 export default class Craft extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      lines: [],
-      newQuote: "",
-      Quote: ""
+      quote: "",
+      word: ``,
+      quotes: []
     };
-    this.quoteCreate = this.quoteCreate.bind(this);
-    this.componentDidMount = this.componentDidMount.bind(this);
+    this.createCard = this.createCard.bind(this);
+    this.createQuote = this.createQuote.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
-  componentDidMount() {
-    axios.get("/api/quotes").then(response => {
-      console.log("response:", response);
-      this.setState({
-        lines: response.data
-      });
-    });
+  createCard(quote) {
+    axios
+      .post("/api/quotes", { quote })
+      .then(response => {
+        console.log(response)
+        this.setState({ quotes: response.data })
+      })
+      .catch(err => console.log(err));
   }
 
-  quoteCreate(e) {
-    this.setState({ Quote: e.target.value });
+  handleChange(e) {
+    // e.preventDefault();
+    this.setState({ word: e.target.value });
   }
+
+  createQuote() {
+    let { word } = this.state;
+
+    this.createCard(word);
+    this.setState({ word: "" })
+  }
+
+  // onChange should update the empty word state
+  // onSubmit should send that imformation to a createCard function
 
   render() {
+    console.log(this.state.quotes)
     return (
       <div>
-        {/* <h5>HELLO</h5> */}
+        <input type="text" onChange={e => this.handleChange(e)} />
+        <button onClick={this.createQuote} />
+
         <div>
-          <input placeholder="hello" onChange={e => this.quoteCreate(e)} />
+          <Card ronQuote={this.state.quotes} />
         </div>
-        <div>
-          <p>{this.state.Quote}</p>
-          <p>{this.state.lines}</p>
-        </div>
+
       </div>
     );
   }
 }
 
-// axios
-// .get("http://ron-swanson-quotes.herokuapp.com/v2/quotes/59")
-// .then(response => {
-//   console.log(response.data);
-//   quotes.push(response.data);
-// });
