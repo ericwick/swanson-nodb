@@ -7,9 +7,6 @@ export default class Delete extends Component {
     this.state = {};
   }
 
-
-  // maybe try to make the edit/delete hidden until your mouse hovers over them?
-
   render() {
     return (
       <div>
