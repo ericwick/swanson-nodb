@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import './Craft.css';
 import axios from "axios";
 import Card from "./Cards/Card";
-// import Input from "./Cards/Input";
 
 export default class Craft extends Component {
   constructor(props) {
@@ -22,13 +21,10 @@ export default class Craft extends Component {
   }
 
   createCard(quote) {
-    // let quoteArr = this.state.quotes
     console.log(quote)
     axios
       .post("/api/quotes", { quote })
       .then(response => {
-        console.log(response, 'response')
-        // quoteArr.unshift(response.data)
         this.setState({ quotes: response.data })
       })
       .catch(err => console.log(err));
@@ -50,9 +46,7 @@ export default class Craft extends Component {
     console.log(id, 'id')
     axios
       .delete(`/api/quotes/${id}`).then(res => this.setState({ quotes: res.data }))
-    // .then(res =>
-    // this.setState({ deleteQuote: res.data }));
-    // console.log(ronQuote, 'del')
+
   }
 
   updateCard(id, quote) {
@@ -61,9 +55,6 @@ export default class Craft extends Component {
       .put(`/api/quotes/${id}`, { quote })
       .then(res => this.setState({ quotes: res.data, showInput: !this.state.showInput }));
   };
-
-  // onChange should update the empty word state
-  // onSubmit should send that imformation to a createCard function
 
   render() {
     console.log(this.state.quotes)
@@ -76,7 +67,7 @@ export default class Craft extends Component {
           <button onClick={this.createQuote} className="inputbutton"></button>
         </div>
 
-        <div>
+        <div>u
           <Card ronQuote={this.state.quotes}
             deleteCardFn={this.deleteCard}
             updateCardFn={this.updateCard}

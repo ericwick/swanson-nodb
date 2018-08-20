@@ -20,8 +20,8 @@ export default class Edit extends Component {
         <button onClick={this.props.toggleInput} className="editbutton">EDIT</button>
         {this.props.showInput ?
           <div>
-            <input onChange={e => this.handleChange(e)} />
-            <button onClick={() => this.props.updateCardFn(this.props.id, this.state.line)}>SUBMIT</button>
+            <input onChange={e => this.handleChange(e)} className="editinput" />
+            <button onClick={() => this.props.updateCardFn(this.props.id, this.state.line)} className="editbuttonsubmit" />
           </div>
           : null}
       </div>

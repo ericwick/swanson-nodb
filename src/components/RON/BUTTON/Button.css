@@ -3,16 +3,12 @@
     width: 150px;
     background-image: url('https://media.timeout.com/images/100626629/630/472/image.jpg');
     background-size: cover;
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
-    border-bottom-left-radius: 30px;
-    border-bottom-right-radius: 30px;
+    border-radius: 50%;
     cursor: pointer;
     outline: none;
+    transition: ease-in-out 1s;
   }
   
-
-  /* .noSelect {
-    webkit-user-select: none;
-    user-select: none;
-} */
+.generate:hover {
+  transform: rotate(360deg);
+}
