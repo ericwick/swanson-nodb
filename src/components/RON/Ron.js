@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./Ron.css";
 import Button from "./BUTTON/Button";
 import axios from "axios";
 
@@ -16,7 +17,7 @@ export default class Ron extends Component {
     axios.get("/api/quotes").then(res => {
       console.log("response:", res);
       this.setState({
-        oneLine: res.data
+        oneLine: res.data[0].quote
       });
     });
   }
@@ -24,17 +25,18 @@ export default class Ron extends Component {
   render() {
     return (
       <div>
-        <h4>
+        <h4 className="titlequote">
           I'm a simple man. I like pretty, dark-haired women, and breakfast
           food.
         </h4>
-        <h1>-SWANSON-</h1>
+        <h1 className="title">-SWANSON-</h1>
+
+        <p className="randomQuote">{this.state.oneLine}</p>
 
         <div>
           <Button generate={this.randomQuote} />
         </div>
 
-        <p>{this.state.oneLine}</p>
       </div>
     );
   }

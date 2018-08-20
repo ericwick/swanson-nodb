@@ -1,0 +1,15 @@
+.title {
+    font-family: 'Special Elite', cursive;
+    font-size: 100px;
+    color: white;
+  }
+
+  .titlequote {
+      padding-top: 80px;
+  }
+
+  .randomQuote {
+      text-align: center;
+      padding: 25px;
+      font-size: 25px;
+  }

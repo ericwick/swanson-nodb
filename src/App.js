@@ -26,6 +26,8 @@ class App extends Component {
 
         <Ron quote={this.state.quotes} />
 
+        <hr className="linebreak" />
+
         <div>
           <Craft />
         </div>

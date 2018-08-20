@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./Button.css";
 
 export default class Button extends Component {
   constructor(props) {
@@ -9,7 +10,7 @@ export default class Button extends Component {
   render() {
     return (
       <div>
-        <button onClick={() => this.props.generate()} className="" />
+        <button onClick={() => this.props.generate()} className="generate" />
       </div>
     );
   }

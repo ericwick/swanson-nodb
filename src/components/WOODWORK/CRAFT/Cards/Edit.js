@@ -1,10 +1,29 @@
 import React, { Component } from "react";
+import "./Edit.css";
 
 export default class Edit extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      line: '',
+      inputBox: false
+    }
+  }
+
+  handleChange(e) {
+    this.setState({ line: e.target.value })
+  }
+
   render() {
     return (
       <div>
-        <Button onClick={this.handleChange} />
+        <button onClick={this.props.toggleInput} className="editbutton">EDIT</button>
+        {this.props.showInput ?
+          <div>
+            <input onChange={e => this.handleChange(e)} />
+            <button onClick={() => this.props.updateCardFn(this.props.id, this.state.line)}>SUBMIT</button>
+          </div>
+          : null}
       </div>
     );
   }
