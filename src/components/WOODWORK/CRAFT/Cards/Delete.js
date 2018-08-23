@@ -1,17 +1,17 @@
-import React, { Component } from "react";
+import React from "react";
 import "./Delete.css";
 
-export default class Delete extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
-  render() {
-    return (
-      <div>
-        <button onClick={() => this.props.deletePostFn(this.props.id)} className="deletebutton">DELETE</button>
-      </div>
-    );
-  }
+function Delete(props) {
+  return (
+    <div>
+      <button
+        onClick={() => props.deletePostFn(props.id)}
+        className="deletebutton"
+      >
+        DELETE
+      </button>
+    </div>
+  );
 }
+
+export default Delete;
