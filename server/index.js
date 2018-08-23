@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 app.get("/api/quotes", qc.getQuotes);
 app.post("/api/quotes", qc.create);
 app.delete("/api/quotes/:id", qc.delete);
-app.put('/api/quotes/:id', qc.update);
+app.put("/api/quotes/:id", qc.update);
 
 app.listen(port, () => {
   console.log(`Listening on port: ${port}`);

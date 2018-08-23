@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import './Craft.css';
+import "./Craft.css";
 import axios from "axios";
 import Card from "./Cards/Card";
 
@@ -8,7 +8,7 @@ export default class Craft extends Component {
     super(props);
     this.state = {
       quote: "",
-      word: ``,
+      word: "",
       quotes: [],
       showInput: false
     };
@@ -17,15 +17,13 @@ export default class Craft extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.deleteCard = this.deleteCard.bind(this);
     this.updateCard = this.updateCard.bind(this);
-
   }
 
   createCard(quote) {
-    console.log(quote)
     axios
       .post("/api/quotes", { quote })
       .then(response => {
-        this.setState({ quotes: response.data })
+        this.setState({ quotes: response.data });
       })
       .catch(err => console.log(err));
   }
@@ -38,40 +36,48 @@ export default class Craft extends Component {
     let { word } = this.state;
 
     this.createCard(word);
-    this.setState({ word: "" })
+    this.setState({ word: "" });
   }
 
-
   deleteCard(id) {
-    console.log(id, 'id')
-    axios
-      .delete(`/api/quotes/${id}`).then(res => this.setState({ quotes: res.data }))
-
+    axios.delete(`/api/quotes/${id}`).then(req =>
+      this.setState({
+        quotes: req.data
+      })
+    );
   }
 
   updateCard(id, quote) {
-    console.log(id, quote)
     axios
       .put(`/api/quotes/${id}`, { quote })
-      .then(res => this.setState({ quotes: res.data, showInput: !this.state.showInput }));
-  };
+      .then(res =>
+        this.setState({ quotes: res.data, showInput: !this.state.showInput })
+      );
+  }
 
   render() {
-    console.log(this.state.quotes)
     return (
       <div className="input">
         <div>
-          <input type="text" onChange={e => this.handleChange(e)} placeholder="CREATE YOUR OWN RON QUOTE" className="inputbar" />
+          <input
+            type="text"
+            onChange={e => this.handleChange(e)}
+            placeholder="CREATE YOUR OWN RON QUOTE"
+            className="inputbar"
+          />
         </div>
         <div>
-          <button onClick={this.createQuote} className="inputbutton"></button>
+          <button onClick={this.createQuote} className="inputbutton" />
         </div>
 
-        <div>u
-          <Card ronQuote={this.state.quotes}
+        <div>
+          <Card
+            ronQuote={this.state.quotes}
             deleteCardFn={this.deleteCard}
             updateCardFn={this.updateCard}
-            toggleInput={() => this.setState({ showInput: !this.state.showInput })}
+            toggleInput={() =>
+              this.setState({ showInput: !this.state.showInput })
+            }
             showInput={this.state.showInput}
           />
         </div>
@@ -79,4 +85,3 @@ export default class Craft extends Component {
     );
   }
 }
-
