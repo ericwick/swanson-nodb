@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./Card.css";
-// import axios from "axios";
 import Edit from "./Edit";
+import Name from "./Name";
 import Delete from "./Delete";
 
 export default class Card extends Component {
@@ -27,6 +27,7 @@ export default class Card extends Component {
             showInput={this.props.showInput}
           />
           <Delete deletePostFn={this.props.deleteCardFn} id={e.id} />
+          <Name />
         </div>
       );
     });

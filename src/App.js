@@ -4,6 +4,7 @@ import "./App.css";
 import axios from "axios";
 import Ron from "./components/RON/Ron";
 import Craft from "./components/WOODWORK/CRAFT/Craft";
+import Name from "./components/WOODWORK/CRAFT/Cards/Name";
 
 class App extends Component {
   constructor() {
@@ -21,7 +22,7 @@ class App extends Component {
     return (
       <div className="App">
         <header>
-          <nav />
+          <Name />
         </header>
 
         <Ron quote={this.state.quotes} />

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./Ron.css";
 import Button from "./BUTTON/Button";
 import axios from "axios";
+import Name from "../WOODWORK/CRAFT/Cards/Name";
 
 export default class Ron extends Component {
   constructor(props) {
@@ -15,7 +16,6 @@ export default class Ron extends Component {
 
   randomQuote() {
     axios.get("/api/quotes").then(res => {
-      // console.log("response:", res);
       this.setState({
         oneLine: res.data[0].quote
       });
@@ -23,7 +23,6 @@ export default class Ron extends Component {
   }
 
   render() {
-    // console.log("oneLine", this.state.oneLine);
     return (
       <div>
         <h4 className="titlequote">
@@ -37,6 +36,7 @@ export default class Ron extends Component {
         <div>
           <Button generate={this.randomQuote} />
         </div>
+        <Name />
       </div>
     );
   }

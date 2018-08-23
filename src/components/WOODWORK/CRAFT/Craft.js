@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./Craft.css";
 import axios from "axios";
 import Card from "./Cards/Card";
+import Name from "./Cards/Name";
 
 export default class Craft extends Component {
   constructor(props) {
@@ -59,6 +60,7 @@ export default class Craft extends Component {
     return (
       <div className="input">
         <div>
+          <Name />
           <input
             type="text"
             onChange={e => this.handleChange(e)}
