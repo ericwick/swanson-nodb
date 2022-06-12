@@ -1,43 +1,27 @@
-import React, { Component } from 'react';
-import './Generate.css';
+import { useState } from 'react';
 import Button from '../Button/Button';
 import axios from 'axios';
-import Name from '../Cards/Name';
+import './Generate.css';
 
-export default class Ron extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      oneLine: [],
-      oneQuote: ''
-    };
-    this.randomQuote = this.randomQuote.bind(this);
-  }
+export default function Ron() {
+  const [oneLine, setOneLine] = useState('');
 
-  randomQuote() {
-    axios.get('/api/quotes').then((res) => {
-      this.setState({
-        oneLine: res.data[0].quote
+  const getQuote = async () => {
+    await axios
+      .get('https://ron-swanson-quotes.herokuapp.com/v2/quotes')
+      .then((response) => {
+        setOneLine(response.data[0]);
       });
-    });
-  }
+  };
 
-  render() {
-    return (
-      <div>
-        <h4 className='titlequote'>
-          I'm a simple man. I like pretty, dark-haired women, and breakfast
-          food.
-        </h4>
-        <h1 className='title'>-SWANSON-</h1>
-
-        <p className='randomQuote'>{this.state.oneLine}</p>
-
-        <div>
-          <Button generate={this.randomQuote} />
-        </div>
-        <Name />
-      </div>
-    );
-  }
+  return (
+    <>
+      <h4 className='titlequote'>
+        I'm a simple man. I like pretty, dark-haired women, and breakfast food.
+      </h4>
+      <h1 className='title'>-SWANSON-</h1>
+      <p className='randomQuote'>{oneLine}</p>
+      <Button generate={getQuote} />
+    </>
+  );
 }
