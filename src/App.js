@@ -1,10 +1,9 @@
-import React, { Component } from "react";
-// import logo from "./logo.svg";
-import "./App.css";
-import axios from "axios";
-import Ron from "./components/RON/Ron";
-import Craft from "./components/WOODWORK/CRAFT/Craft";
-import Name from "./components/WOODWORK/CRAFT/Cards/Name";
+import React, { Component } from 'react';
+import './App.css';
+import axios from 'axios';
+import Ron from './components/Generate/Generate';
+import Craft from './components/Craft/Craft';
+import Name from './components/Cards/Name';
 
 class App extends Component {
   constructor() {
@@ -15,19 +14,19 @@ class App extends Component {
   }
 
   componentDidMount() {
-    axios.get("/api/quotes");
+    axios.get('/api/quotes');
   }
 
   render() {
     return (
-      <div className="App">
+      <div className='App'>
         <header>
           <Name />
         </header>
 
         <Ron quote={this.state.quotes} />
 
-        <hr className="linebreak" />
+        <hr className='linebreak' />
 
         <div>
           <Craft />

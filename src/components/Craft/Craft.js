@@ -1,15 +1,15 @@
-import React, { Component } from "react";
-import "./Craft.css";
-import axios from "axios";
-import Card from "./Cards/Card";
-import Name from "./Cards/Name";
+import React, { Component } from 'react';
+import './Craft.css';
+import axios from 'axios';
+import Card from '../Cards/Card';
+import Name from '../Cards/Name';
 
 export default class Craft extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      quote: "",
-      word: "",
+      quote: '',
+      word: '',
       quotes: [],
       showInput: false
     };
@@ -22,11 +22,11 @@ export default class Craft extends Component {
 
   createCard(quote) {
     axios
-      .post("/api/quotes", { quote })
-      .then(response => {
+      .post('/api/quotes', { quote })
+      .then((response) => {
         this.setState({ quotes: response.data });
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   }
 
   handleChange(e) {
@@ -37,11 +37,11 @@ export default class Craft extends Component {
     let { word } = this.state;
 
     this.createCard(word);
-    this.setState({ word: "" });
+    this.setState({ word: '' });
   }
 
   deleteCard(id) {
-    axios.delete(`/api/quotes/${id}`).then(req =>
+    axios.delete(`/api/quotes/${id}`).then((req) =>
       this.setState({
         quotes: req.data
       })
@@ -51,25 +51,25 @@ export default class Craft extends Component {
   updateCard(id, quote) {
     axios
       .put(`/api/quotes/${id}`, { quote })
-      .then(res =>
+      .then((res) =>
         this.setState({ quotes: res.data, showInput: !this.state.showInput })
       );
   }
 
   render() {
     return (
-      <div className="input">
+      <div className='input'>
         <div>
           <Name />
           <input
-            type="text"
-            onChange={e => this.handleChange(e)}
-            placeholder="CREATE YOUR OWN RON QUOTE"
-            className="inputbar"
+            type='text'
+            onChange={(e) => this.handleChange(e)}
+            placeholder='CREATE YOUR OWN RON QUOTE'
+            className='inputbar'
           />
         </div>
         <div>
-          <button onClick={this.createQuote} className="inputbutton" />
+          <button onClick={this.createQuote} className='inputbutton' />
         </div>
 
         <div>

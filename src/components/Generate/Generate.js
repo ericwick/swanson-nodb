@@ -1,21 +1,21 @@
-import React, { Component } from "react";
-import "./Ron.css";
-import Button from "./BUTTON/Button";
-import axios from "axios";
-import Name from "../WOODWORK/CRAFT/Cards/Name";
+import React, { Component } from 'react';
+import './Generate.css';
+import Button from '../Button/Button';
+import axios from 'axios';
+import Name from '../Cards/Name';
 
 export default class Ron extends Component {
   constructor(props) {
     super(props);
     this.state = {
       oneLine: [],
-      oneQuote: ""
+      oneQuote: ''
     };
     this.randomQuote = this.randomQuote.bind(this);
   }
 
   randomQuote() {
-    axios.get("/api/quotes").then(res => {
+    axios.get('/api/quotes').then((res) => {
       this.setState({
         oneLine: res.data[0].quote
       });
@@ -25,13 +25,13 @@ export default class Ron extends Component {
   render() {
     return (
       <div>
-        <h4 className="titlequote">
+        <h4 className='titlequote'>
           I'm a simple man. I like pretty, dark-haired women, and breakfast
           food.
         </h4>
-        <h1 className="title">-SWANSON-</h1>
+        <h1 className='title'>-SWANSON-</h1>
 
-        <p className="randomQuote">{this.state.oneLine}</p>
+        <p className='randomQuote'>{this.state.oneLine}</p>
 
         <div>
           <Button generate={this.randomQuote} />

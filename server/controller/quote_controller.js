@@ -1,14 +1,14 @@
-const axios = require("axios");
+const axios = require('axios');
 let quotes = [];
 let create = [];
-var id = 0;
+let id = 0;
 
 module.exports = {
   getQuotes: async (req, res, next) => {
     let lines = [];
     await axios
-      .get("http://ron-swanson-quotes.herokuapp.com/v2/quotes")
-      .then(response => {
+      .get('http://ron-swanson-quotes.herokuapp.com/v2/quotes')
+      .then((response) => {
         lines.unshift(response.data[0]);
       });
 
@@ -35,7 +35,7 @@ module.exports = {
 
   update: (req, res, next) => {
     let newQuoteId = req.params.id;
-    let updateId = quotes.findIndex(quotes => quotes.id == newQuoteId);
+    let updateId = quotes.findIndex((quotes) => quotes.id == newQuoteId);
     let newQuote = quotes[updateId];
 
     Object.assign(newQuote, req.body);
